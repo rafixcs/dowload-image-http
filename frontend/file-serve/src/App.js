@@ -18,6 +18,7 @@ function App() {
       console.log(response)
       if (response.data instanceof Blob) {
         const url = URL.createObjectURL(response.data);
+        console.log(url)
         setImageSrc(url);
       } else {
         throw new Error('Response is not a Blob');
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <h1>Image serve test!</h1>
-      {imageSrc ? <img src={imageSrc} alt='Fetched from server'/> : <></>}
+      {imageSrc ? <img src={imageSrc} alt='Fetched from server'/> : <p>Press button to download image</p> }
       <button onClick={(e) => handleDownloadImage(e)}>Download image!</button>
     </div>
   );
